@@ -14,6 +14,12 @@ Welcome to the source code for my personal website and developer portfolio, buil
 
 ---
 
+## 💻 Featured Software Projects
+
+* **[Student Gradebook Benchmark (`student-gradebook-cpp`)](https://github.com):** A C++ console application utilizing custom class design and operator overloading (`>>`, `<<`, `>=`) to read and filter student records against target benchmarks.
+
+---
+
 ## 🛠️ Technologies Used
 
 * **Frontend:** HTML5, CSS3 (Flexbox, responsive design, custom gradients), JavaScript (ES6+), jQuery
