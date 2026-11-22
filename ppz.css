@@ -1,6 +1,14 @@
+@import url('https://googleapis.com');
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: rgb(32, 44, 51);
-  color: white;
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
   margin: 0;
   padding: 0;
   display: flex;
@@ -8,11 +16,17 @@ body {
 }
 
 nav {
-  min-height: 50px;
+  min-height: 70px;
   width: 100%;
+  background-color: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .list {
@@ -20,110 +34,199 @@ nav {
   justify-content: flex-end;
   list-style: none;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 600;
   margin: 0;
-  padding: 0 20px;
+  padding: 0;
+  gap: 16px;
 }
 
 li {
-  margin: 15px 8px;
+  margin: 0;
 }
 
 .logo {
-  height: 60px;
-  width: 100px;
-  margin: 5px 20px;
+  height: 50px;
+  width: auto;
   object-fit: contain;
 }
 
 a {
   text-decoration: none;
-  color: aquamarine;
+  color: #38bdf8;
+  transition: color 0.2s ease;
 }
 
-.photo {
-  height: 100px;
-  width: 100px;
-  border-radius: 50px;
-  object-fit: cover;
-}
-
-h1 {
-  text-transform: uppercase;
-}
-
-.style-break {
-  width: 30px;
-  height: 5px;
-  background-color: blue;
-  border-radius: 2.5px;
-  margin: 30px 0;
-}
-
-.second {
-  background-image: url("magazine-unlock-01-2.3.10392-_83B20D8FBA828852BEB96E4BD33E2185.jpg");
-  background-blend-mode: soft-light;
-  background-size: cover;
-  background-position: center;
-  border-radius: 30px 0 30px 0;
-  height: 300px;
-  width: 100%;
-  max-width: 500px;
-  margin: 30px;
-}
-
-.papi {
-  margin: 30px;
-  max-width: 500px;
+a:hover {
+  color: #7dd3fc;
 }
 
 .section {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1100px;
   width: 100%;
-  min-height: 400px;
-  font-weight: bold;
+  min-height: 420px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.papi {
+  max-width: 500px;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 0 12px 0;
+  color: #ffffff;
+}
+
+.papi p {
+  color: #cbd5e1;
+  font-size: 16px;
+}
+
+.style-break {
+  width: 50px;
+  height: 5px;
+  background-color: #38bdf8;
+  border-radius: 3px;
+  margin: 24px 0;
+}
+
+.second {
+  background: linear-gradient(rgba(15, 23, 42, 0.35), rgba(15, 23, 42, 0.55)),
+    url("magazine-unlock-01-2.3.10392-_83B20D8FBA828852BEB96E4BD33E2185.jpg") center/cover no-repeat;
+  border: 2px solid rgba(56, 189, 248, 0.3);
+  border-radius: 30px 0 30px 0;
+  height: 300px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
 aside {
   width: 100%;
-  background-color: grey;
+  background-color: #1e293b;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
-  border-radius: 12px;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 40px 0;
+  gap: 32px;
+  padding: 60px 20px;
 }
 
 .Mzuvukile {
-  width: 300px;
-  margin: 30px;
   display: flex;
-  justify-content: flex-start;
-  font-weight: bold;
+  justify-content: center;
+}
+
+.photo {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  border: 3px solid #38bdf8;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .info {
-  max-width: 300px;
-  margin: 30px;
+  max-width: 500px;
+}
+
+.info h2 {
+  color: #38bdf8;
+  margin-top: 0;
+}
+
+.info p {
+  color: #cbd5e1;
+}
+
+/* Project Cards Section */
+.portfolio-projects {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.portfolio-projects h2 {
+  color: #ffffff;
+  font-size: 28px;
+  margin-bottom: 32px;
+}
+
+.project-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 320px;
+  text-align: left;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: #38bdf8;
+}
+
+.project-card h3 {
+  color: #38bdf8;
+  margin-top: 0;
+}
+
+.project-card p {
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.card-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 18px;
+  background-color: #38bdf8;
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 20px;
+}
+
+.card-btn:hover {
+  background-color: #7dd3fc;
+  color: #0f172a;
 }
 
 .footer {
-  color: darkred;
-  padding: 40px 0 18% 0;
+  color: #cbd5e1;
+  padding: 60px 20px;
   text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
   text-align: center;
-  background-image: url("papz.jpg");
-  background-blend-mode: multiply;
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)),
+    url("papz.jpg") center/cover no-repeat;
 }
 
-@media screen and (max-width: 400px) {
-  .footer {
-    color: blue;
+@media screen and (max-width: 480px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
   }
 }
