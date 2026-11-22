@@ -7,6 +7,7 @@ let birdY = 180;
 let birdVelocity = 0;
 const gravity = 0.4;
 const jumpStrength = -7.5;
+const bounceDamping = 0.75; // Controls how high the ball bounces off floor/ceiling
 const birdX = 100;
 const birdRadius = 15;
 
@@ -71,18 +72,29 @@ function update() {
   birdVelocity += gravity;
   birdY += birdVelocity;
 
+  // Bouncy ceiling (top wall)
+  if (birdY - birdRadius < 0) {
+    birdY = birdRadius;
+    birdVelocity = Math.abs(birdVelocity) * bounceDamping;
+  }
+
+  // Bouncy floor (bottom wall)
+  if (birdY + birdRadius > canvas.height) {
+    birdY = canvas.height - birdRadius;
+    birdVelocity = -Math.abs(birdVelocity) * bounceDamping;
+  }
+
   // Spawn a pipe every 100 frames
   if (frameCount % 100 === 0) {
     spawnPipe();
   }
   frameCount++;
 
-  // Move pipes and check collisions
+  // Move pipes and check collisions (Game Over ONLY on pipe hit)
   for (let i = pipes.length - 1; i >= 0; i--) {
     const p = pipes[i];
     p.x -= pipeSpeed;
 
-    // Check collision with pipe
     const hitX = birdX + birdRadius > p.x && birdX - birdRadius < p.x + pipeWidth;
     const hitTop = birdY - birdRadius < p.topHeight;
     const hitBottom = birdY + birdRadius > p.bottomY;
@@ -103,11 +115,6 @@ function update() {
       pipes.splice(i, 1);
     }
   }
-
-  // Check floor & ceiling collision
-  if (birdY + birdRadius > canvas.height || birdY - birdRadius < 0) {
-    endGame();
-  }
 }
 
 function endGame() {
@@ -121,16 +128,19 @@ function draw() {
   ctx.fillStyle = "#111";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+  // Draw subtle bouncy border lines on top & bottom walls
+  ctx.fillStyle = "#00e5ff";
+  ctx.fillRect(0, 0, canvas.width, 4);
+  ctx.fillRect(0, canvas.height - 4, canvas.width, 4);
+
   // Draw pipes
   ctx.fillStyle = "#4caf50";
   pipes.forEach((p) => {
-    // Top pipe
     ctx.fillRect(p.x, 0, pipeWidth, p.topHeight);
-    // Bottom pipe
     ctx.fillRect(p.x, p.bottomY, pipeWidth, canvas.height - p.bottomY);
   });
 
-  // Draw player (bird)
+  // Draw player (ball)
   ctx.beginPath();
   ctx.arc(birdX, birdY, birdRadius, 0, Math.PI * 2);
   ctx.fillStyle = "#ffd700";
@@ -141,8 +151,8 @@ function draw() {
   ctx.fillStyle = "white";
   ctx.font = "bold 20px sans-serif";
   ctx.textAlign = "left";
-  ctx.fillText("Score: " + score, 15, 30);
-  ctx.fillText("Best: " + highScore, 15, 55);
+  ctx.fillText("Score: " + score, 15, 32);
+  ctx.fillText("Best: " + highScore, 15, 57);
 
   // Draw Game Over overlay
   if (gameOver) {
