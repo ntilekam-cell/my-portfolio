@@ -1,0 +1,36 @@
+#papi {
+  background-color: #c3c3c3;
+  text-align: center;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+#me {
+  color: blue;
+}
+
+#canvas {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+  background-color: black;
+  border-radius: 8px;
+}
+
+#button {
+  padding: 12px 32px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+#button:hover {
+  background-color: darkblue;
+}
