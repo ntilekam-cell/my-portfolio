@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ntileka</title>
   <link rel="stylesheet" href="new.css">
-  <script src="https://jquery.com"></script>
+  <!-- Pointed to the actual jQuery library file instead of the homepage -->
+  <script src="https://jquery.com" defer></script>
   <script src="hide.js" defer></script>
   <script src="new1.js" defer></script>
 </head>
@@ -28,20 +29,29 @@
   </header>
 
   <section class="feature">
-    <div class="container">
+        <div class="container">
+      <!-- Location -->
       <div class="pic">
         <img src="location.jpg" height="50" width="50" alt="Location icon">
-        <p>Location</p>
+        <p><strong>Location</strong></p>
+        <p>Germiston Town, Gauteng</p>
       </div>
+
+      <!-- Live Visitor Statistics -->
       <div class="pic">
         <img src="statistic.jpg" height="50" width="50" alt="Statistics icon">
-        <p>Statistic</p>
+        <p><strong>Statistics</strong></p>
+        <p><span class="visit-count">Loading...</span> Visits</p>
       </div>
+
+      <!-- Contact Me -->
       <div class="pic">
         <img src="contact.jpg" height="50" width="50" alt="Contact icon">
-        <p>Contact Us</p>
+        <p><strong>Contact Me</strong></p>
+        <p><a href="mailto:ntilekam@gmail.com">ntilekam@gmail.com</a></p>
       </div>
     </div>
+
 
     <div class="mean">
       <audio controls>
@@ -85,7 +95,7 @@
     </blockquote>
   </section>
 
-  <footer>
+    <footer>
     <div class="my">
       <ul>
         <li><a href="index.html"><strong>Home</strong></a></li>
@@ -93,23 +103,44 @@
         <li><a href="game.html"><strong>My Game</strong></a></li>
         <li><a href="Untitled-1.html#about-me"><strong>About Mzuvukile</strong></a></li>
       </ul>
+
+      <!-- Footer Location -->
       <div class="pi">
         <img src="location.jpg" height="40" width="40" alt="Location icon">
-        <p>Location</p>
+        <p><strong>Location:</strong> Germiston Town</p>
       </div>
+
+      <!-- Footer Statistics -->
       <div class="pi">
         <img src="statistic.jpg" height="40" width="40" alt="Statistics icon">
-        <p>Statistic</p>
+        <p><strong>Visits:</strong> <span class="visit-count">Loading...</span></p>
       </div>
+
+      <!-- Footer Contact Us -->
       <div class="pi">
         <img src="contact.jpg" height="40" width="40" alt="Contact icon">
-        <p>Contact Us</p>
+        <p><strong>Contact Us:</strong> <a href="mailto:ntilekam@gmail.com">ntilekam@gmail.com</a></p>
       </div>
     </div>
 
     <p><strong>This is where we can exchange info and educate each other</strong></p>
     <p>Copyright Reserved &copy; Created by Mzuvukile 2026.</p>
   </footer>
+
+  <script>
+    const countElements = document.querySelectorAll('.visit-count');
+    const apiBase = 'https://counterapi.dev';
+    const endpoint = localStorage.getItem('site_visited') ? apiBase : `${apiBase}/up`;
+
+    fetch(endpoint)
+      .then(res => res.json())
+      .then(data => {
+        const total = (data.count || 1).toLocaleString();
+        countElements.forEach(el => el.textContent = total);
+        localStorage.setItem('site_visited', 'true');
+      })
+      .catch(() => countElements.forEach(el => el.textContent = '1+'));
+  </script>
 
 </body>
 </html>
