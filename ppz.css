@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #0f172a;
   color: #f8fafc;
@@ -90,6 +94,10 @@ h1 {
   font-size: 16px;
 }
 
+.papi strong {
+  color: #38bdf8;
+}
+
 .style-break {
   width: 50px;
   height: 5px;
@@ -118,26 +126,62 @@ aside {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 32px;
+  gap: 40px;
   padding: 60px 20px;
 }
 
+/* Updated Circle Container with Hover Effect */
 .Mzuvukile {
+  height: 170px;
+  width: 170px;
+  min-width: 170px;
+  border-radius: 50%;
+  border: 3px solid #38bdf8;
+  background-color: #0f172a;
+  overflow: hidden;
   display: flex;
+  align-items: center;
   justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.Mzuvukile:hover {
+  transform: translateY(-6px) scale(1.05);
+  border-color: #7dd3fc;
+  box-shadow: 0 12px 28px rgba(56, 189, 248, 0.45);
 }
 
 .photo {
-  height: 160px;
-  width: 160px;
-  border-radius: 50%;
-  border: 3px solid #38bdf8;
+  height: 100%;
+  width: 100%;
   object-fit: cover;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  display: block;
+}
+
+/* Centered Fallback Name when Photo is Missing */
+.circle-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+  padding: 16px;
+  transition: color 0.3s ease;
+}
+
+.Mzuvukile:hover .circle-fallback {
+  color: #7dd3fc;
 }
 
 .info {
-  max-width: 500px;
+  max-width: 550px;
 }
 
 .info h2 {
@@ -147,6 +191,28 @@ aside {
 
 .info p {
   color: #cbd5e1;
+}
+
+.info h3 {
+  color: #38bdf8;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.qualifications-list {
+  color: #cbd5e1;
+  font-size: 15px;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.qualifications-list li {
+  margin-bottom: 6px;
+}
+
+.qualifications-list strong {
+  color: #f8fafc;
 }
 
 /* Project Cards Section */
@@ -206,11 +272,13 @@ aside {
   font-weight: 600;
   font-size: 14px;
   border-radius: 20px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .card-btn:hover {
   background-color: #7dd3fc;
   color: #0f172a;
+  transform: translateY(-2px);
 }
 
 .footer {
