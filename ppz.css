@@ -245,6 +245,8 @@ aside {
   width: 100%;
   max-width: 320px;
   text-align: left;
+  display: flex;
+  flex-direction: column;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
@@ -261,11 +263,13 @@ aside {
 .project-card p {
   color: #cbd5e1;
   font-size: 14px;
+  flex-grow: 1;
 }
 
 .card-btn {
   display: inline-block;
-  margin-top: 12px;
+  align-self: flex-start;
+  margin-top: 16px;
   padding: 8px 18px;
   background-color: #38bdf8;
   color: #0f172a;
